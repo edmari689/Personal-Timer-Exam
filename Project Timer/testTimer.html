@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Timer Test</title>
+		<link rel="stylesheet" href="timerStyle.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	</head>
+	<body>
+
+	<div ng-app="myTimerApp" ng-controller="myTimerCtrl">
+	
+	<form ng-hide="startTest">
+	<br>
+	<p>Name: <input ng-model="name"></p>
+	<br>
+	<p>This is the test that determines your quickness in answering questions. Read the following notes about the test:</p>
+	<ul>
+		<li>The test is good for 5 questions to answer.</li>
+		<li>Each question has 4 choices to choose.</li>
+		<li>The time limit of the test is set to 30 seconds to finish the test.</li>
+	</ul>
+	<center><p>Good luck!</p></center>
+	<center><button ng-model= "startTest" ng-init="startTest=false" ng-click="startTest=true; countdown()" class="allButton">Start the Test</button></center>
+	<br>
+	</form>
+	
+	<div ng-show="startTest">
+	<form ng-hide="openResult">
+	<center><h2 ng-model="counter" ng-bind="counter"></h2></center>
+	<br><br>
+	<p>1.) HTML stands for:<br>
+		<input ng-model="t1" type="radio" value=0>Hyper Tile Markup Language<br>
+		<input ng-model="t1" type="radio" value=00>Hyper Texture Markup Language<br>
+		<input ng-model="t1" type="radio" value=1>Hyper Text Markup Language<br>
+		<input ng-model="t1" type="radio" value=000>Hyper Test Markup Language<br>
+	</p>
+	<p>2.) There is the sum of x and y. How to print the sum using PHP?<br>
+		<input ng-model="t2" type="radio" value=0>System.out.println(x + y)<br>
+		<input ng-model="t2" type="radio" value=00>print(x + y)<br>
+		<input ng-model="t2" type="radio" value=000>document.getElementById("sum").innerHTML = (x + y);<br>
+		<input ng-model="t2" type="radio" value=1>echo $x + $y<br>
+	</p>
+	<p>3.) What is the study or use of systems for storing, retrieving, and sending information?<br>
+		<input ng-model="t3" type="radio" value=1>Information Technology<br>
+		<input ng-model="t3" type="radio" value=0>Information Systems<br>
+		<input ng-model="t3" type="radio" value=00>Information Cloud<br>
+		<input ng-model="t3" type="radio" value=000>Information Science<br>
+	</p>
+	<p>4.) What is the one of the most popular programming languages, used for building server-side applications to video games and mobile apps?<br>
+		<input ng-model="t4" type="radio" value=0>C++<br>
+		<input ng-model="t4" type="radio" value=1>Java<br>
+		<input ng-model="t4" type="radio" value=00>Python<br>
+		<input ng-model="t4" type="radio" value=000>Ruby<br>
+	</p>
+	<p>5.) What developer invented AngularJS in 2010?<br>
+		<input ng-model="t5" type="radio" value=0>Netscape Communications Corporation<br>
+		<input ng-model="t5" type="radio" value=1>Google<br>
+		<input ng-model="t5" type="radio" value=00>World Wide Web Consortium<br>
+		<input ng-model="t5" type="radio" value=000>Zend Technologies<br>
+	</p>
+	<br>
+	
+	<center><button ng-model= "openResult" ng-init="openResult=false" ng-click="openResult=true; stop()" class="allButton">Finish</button></center>
+	<br>
+	</form>
+	</div>
+	
+	<fieldset ng-show="openResult">
+		<legend><h1>Results</h1></legend>
+			<h3>Name: {{name}}</h3>
+			<h3>Score: {{t1 -- t2 -- t3 -- t4 -- t5}} / 5 points</h3>
+			<h3>Passing: {{(t1 -- t2 -- t3 -- t4 -- t5) >= 3 ? "PASS" : "FAIL"}}</h3>
+			<h3>Time Finished: {{counter}} seconds.</h3>
+	</fieldset>
+		
+	</div>
+	
+	<script src="myTimerApp.js"></script>
+	<script src="myTimerCtrl.js"></script>
+	
+	</body>
+</html>
